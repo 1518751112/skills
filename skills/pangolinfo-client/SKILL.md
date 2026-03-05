@@ -1,6 +1,6 @@
 ---
 name: pangolinfo-client
-description: Pangolinfo数据采集系统API调用技能包 - 使用curl命令行工具快速调用API。当用户需要调用Pangolinfo API、获取订阅计划、管理任务、查询用户信息、获取运行记录、管理追踪对象、查看账单订单等数据采集相关操作时使用此技能。
+description: Pangolinfo数据采集系统API调用技能包 - 使用curl命令行工具快速调用API。支持两大API系统：1) 数据采集系统API - 管理订阅计划、任务、用户信息、运行记录、追踪对象、账单订单等；2) ScrapeAPI实时抓取 - Amazon商品详情/评论/跟卖、Google搜索结果(含AI Overview)、地图数据、WIPO专利查询等。当用户需要调用Pangolinfo相关API进行数据采集或实时抓取时使用此技能。
 ---
 
 # Pangolinfo API 客户端技能
