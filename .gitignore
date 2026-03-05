@@ -1,0 +1,9 @@
+.DS_Store
+__pycache__/
+.idea/
+.vscode/
+.claude/
+.agents/
+
+package-lock.json
+skills-lock.json

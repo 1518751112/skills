@@ -1,0 +1,12 @@
+{
+  "name": "pangolinfo-client",
+  "version": "1.0.0",
+  "description": "Pangolinfo API客户端 - 基于OpenAPI规范的完整Node.js客户端",
+  "main": "client.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": ["pangolinfo", "api", "client"],
+  "author": "",
+  "license": "MIT"
+}
