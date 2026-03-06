@@ -49,6 +49,13 @@ curl -s -X POST "https://extapi.pangolinfo.com<endpoint>" \
 - `-X POST`: 指定 HTTP 方法（GET 是默认值，可省略）
 - `-H`: 添加 HTTP header
 - `-d`: POST 请求体（JSON 格式）
+- `kind`: 任务类型，分为：
+  - `amzProductDetail`: Amazon 商品详情
+  - `amzKeyword`: Amazon 关键词追踪
+  - `amzNewReleases`: Amazon 新品榜
+  - `amzBestSellers`: Amazon 热卖榜
+  - `amzProductOfCategory`: Amazon 指定类目
+  - `amzProductOfSeller`: Amazon 指定店铺
 
 ## 常用 API 端点参考
 
@@ -95,6 +102,7 @@ curl -s -X POST "https://extapi.pangolinfo.com<endpoint>" \
   - `-d '{"kind":"amzKeyword","contents":["desk"]}'`
 - `POST /tracker/content/check-follow` - 检查追踪状态 (需要kind和contents字段)
   - `-d '{"kind":"amzProductDetail","contents":["B0D79QCMF5","B0C1Y8Z6VT"]}'`
+- `GET /crawler/task/field/listSupportedFields?kind=amzKeyword` - 获取支持的字段列表 ✅
 
 ### 任务统计
 - `GET /task/stats/tracker` - 获取追踪统计 ✅
@@ -170,7 +178,7 @@ curl -s "https://extapi.pangolinfo.com/crawler/task/queryPage?pageNum=1&pageSize
 curl -s -X POST "https://extapi.pangolinfo.com/crawler/task/save" \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
-  -d '{"contents":["B0XXXXXX"],"kind":"amzProductDetail"}'
+  -d '{"step":4,"title":"关键词追踪: watch","pageNum":3,"zipcode":"any","timeZone":"GMT-12","contents":["watch"],"targetSite":"amz_us","cronExpress":["0 15 00 * * ? *","0 00 12 * * ? *"],"requireFields":["datetime","keyword","asin","title","pageIndex","price","image","star","rating","natureRank","spRank","isSponsored","isPrime","sales"],"kind":"amzKeyword","pushWay":"merge_push","cycle":"daily","email":"15****2@qq.com","asins":[],"taskId":"","endPrice":"","discounts":[],"startPrice":"","secondaryTask":{"kind":"amzKeyword","requireFields":["datetime","asin","title","price","star","rating","description","merchantId","categoryId","image","hasCart","coupon","color","size","productDims","productWeight","pkgDims","pkgWeight","firstDate","soldBy","brand","sales","deliveryTime","categoryName"]}}'
 ```
 
 **示例 5: 查看详细请求信息（调试用）**
@@ -195,14 +203,6 @@ curl -s -X POST "https://extapi.pangolinfo.com/tracker/content/check-follow" \
   -d '{"kind":"amzProductDetail","contents":["B0D79QCMF5","B0C1Y8Z6VT"]}'
 ```
 
-**示例 8: 导出任务数据（POST）**
-```bash
-curl -s -X POST "https://extapi.pangolinfo.com/crawler/task/export" \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json" \
-  -d '{"kind":"amzKeyword","fileType":"excel","recordIds":["<recordId>"]}'
-```
-
 **示例 9: 校验类目ID（POST）**
 ```bash
 curl -s -X POST "https://extapi.pangolinfo.com/category/check-category" \
@@ -225,14 +225,6 @@ curl -s -X POST "https://scrapeapi.pangolinfo.com/api/v3/extract/search" \
   -H "Authorization: Bearer <token>" \
   -H "Content-Type: application/json" \
   -d '{"url":"https://www.google.com/search?q=how+java+work","timeout":25000,"isObstinate":true}'
-```
-
-**示例 12: 地图数据抓取（ScrapeAPI）**
-```bash
-curl -s -X POST "https://scrapeapi.pangolinfo.com/api/v3/extract/search/maps" \
-  -H "Authorization: Bearer <token>" \
-  -H "Content-Type: application/json" \
-  -d '{"query":"restaurants near San Francisco","ll":"37.7822392,-122.4642121,13z","hl":"en","from":0,"num":50,"timeout":25000}'
 ```
 
 ## 注意事项
