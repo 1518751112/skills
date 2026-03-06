@@ -180,6 +180,16 @@ curl -s -X POST "https://extapi.pangolinfo.com/crawler/task/save" \
   -H "Content-Type: application/json" \
   -d '{"step":4,"title":"关键词追踪: watch","pageNum":3,"zipcode":"any","timeZone":"GMT-12","contents":["watch"],"targetSite":"amz_us","cronExpress":["0 15 00 * * ? *","0 00 12 * * ? *"],"requireFields":["datetime","keyword","asin","title","pageIndex","price","image","star","rating","natureRank","spRank","isSponsored","isPrime","sales"],"kind":"amzKeyword","pushWay":"merge_push","cycle":"daily","email":"15****2@qq.com","asins":[],"taskId":"","endPrice":"","discounts":[],"startPrice":"","secondaryTask":{"kind":"amzKeyword","requireFields":["datetime","asin","title","price","star","rating","description","merchantId","categoryId","image","hasCart","coupon","color","size","productDims","productWeight","pkgDims","pkgWeight","firstDate","soldBy","brand","sales","deliveryTime","categoryName"]}}'
 ```
+pushWay 推送方式，分为：
+  - `merge_push`: 合并推送
+  - `alone_push`: 执行采集就推送
+  - `not_push`: 不推送
+不定时任务，分为：
+  - `daily`: 每日任务
+  - `weekly`: 每周任务
+  - `monthly`: 每月任务
+  - `manual`: 手动任务 cronExpress空数组 、timeZone空字符串
+
 
 **示例 5: 查看详细请求信息（调试用）**
 ```bash
