@@ -1,0 +1,8 @@
+{
+  "platform": "v2ex",
+  "database": "data/v2ex-ui-designer-remote.sqlite3",
+  "filter_known": true,
+  "requests": [
+    {"mode": "search", "query": "UI 设计师招聘的远程工作", "limit": 20}
+  ]
+}

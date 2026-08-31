@@ -1,0 +1,8 @@
+{
+  "platform": "v2ex",
+  "database": "data/v2ex-jobs.sqlite3",
+  "filter_known": true,
+  "requests": [
+    {"mode": "node", "node": "jobs", "limit": 50}
+  ]
+}
