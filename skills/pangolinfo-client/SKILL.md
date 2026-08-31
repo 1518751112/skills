@@ -244,7 +244,7 @@ curl -s -X POST "https://scrapeapi.pangolinfo.com/api/v3/extract/search" \
 - 如果 API 返回错误，清晰地告知用户错误信息
 - URL 参数需要进行 URL 编码（如空格用 %20）
 - 许多 queryPage 端点需要分页参数（pageNum 和 pageSize）
-- POST 端点需要根据 OpenAPI 规范提供正确的请求体字段
-- 建议优先使用已验证的端点（标注 ✅）
 - 使用 -v 参数可以查看详细的请求和响应信息，便于调试
 - 使用 -s 参数可以隐藏进度条，获得更清晰的输出
+- 使用curl命令工具请求失败出现乱码等问题，可以使用nodejs原始fetch函数请求直接调用API
+  - 示例：node -e "fetch('https://extapi.pangolinfo.com/setmeal/?app=data_api', { headers: { 'Authorization': 'Bearer <token>' } }).then(res => res.text()).then(json => console.log(json))"
